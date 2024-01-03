@@ -86,8 +86,21 @@ class Atm:
                 print("Please provide valid input.")
 
 
-a1 = Atm()
-# print(id(a1))
-a1.deposit()
-a1.withdraw()
-a1.check_balance()
+# a1 = Atm()
+# a1.deposit()
+# a1.withdraw()
+# a1.check_balance()
+
+"""
+OOP demo with Fraction class
+"""
+
+
+class Fraction:
+    def __init__(self, n, d):
+        self._nume = n
+        self._deno = d
+
+
+f1 = Fraction(2, 3)
+print(f1)
