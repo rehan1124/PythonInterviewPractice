@@ -9,6 +9,10 @@ https://www.youtube.com/watch?v=CD6MJ9pEn2k&list=PLWF9TXck7O_zuU2_BVUTrmGMCXYSYz
 https://www.youtube.com/watch?v=Mf2RdpEiXjU ONGOING
 """
 
+"""
+A simple class showcasing ATM functionality
+"""
+
 
 class Atm:
     def __init__(self):
@@ -27,6 +31,7 @@ class Atm:
     def create_new_pin(self):
         self._pin = int(input("Enter new pin:\n"))
         print("New pin has been created.")
+        self.menu()
 
     def deposit(self):
         if self._check_pin():
@@ -35,6 +40,8 @@ class Atm:
             print(f"Amount {deposit_money} has been deposited.")
         else:
             print("Incorrect pin entered.")
+
+        self.menu()
 
     def withdraw(self):
         if self._check_pin():
@@ -47,11 +54,15 @@ class Atm:
         else:
             print("Incorrect pin entered.")
 
+        self.menu()
+
     def check_balance(self):
         if self._check_pin():
             print(f"Your account balance is {self._balance}")
         else:
             print("Incorrect pin entered.")
+
+        self.menu()
 
     def exit(self):
         return
@@ -100,6 +111,9 @@ class Fraction:
     def __init__(self, n, d):
         self._nume = n
         self._deno = d
+
+    def __str__(self):
+        return f"{self._nume}/{self._deno}"
 
 
 f1 = Fraction(2, 3)
