@@ -31,3 +31,7 @@ finally:
     driver.switch_to.window(current_window)
     time.sleep(10)
     driver.quit()
+
+driver.switch_to.alert.accept()
+driver.switch_to.alert.dismiss()
+driver.switch_to.frame()
