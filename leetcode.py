@@ -184,5 +184,8 @@ def merge_intervals(intervals_list):
 
     return merged_intervals
 
+# print(merge_intervals([[1, 3], [5, 8], [2, 4], [7, 9]]))
 
-print(merge_intervals([[1, 3], [5, 8], [2, 4], [7, 9]]))
+
+# Problem 11: Given a non-empty array of decimal digits representing a non-negative integer, increment one to the
+# integer.
