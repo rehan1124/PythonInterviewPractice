@@ -25,7 +25,19 @@ select dept Department, count(*) EmpCount from EMPLOYEE
 group by dept
 having EmpCount > 1
 order by EmpCount desc;
-*/
 
 select * from EMPLOYEE
 where name like "C%";
+*/
+
+/*
+select * from (
+select *, ROW_NUMBER() OVER (ORDER BY empId) as row_num
+from EMPLOYEE as EMP1) as EMP2
+where row_num in (2, 3, 5)
+;
+
+select name, salary from EMPLOYEE
+union all
+select name, salary from EMPLOYEE;
+*/

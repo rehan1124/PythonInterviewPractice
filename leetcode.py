@@ -124,5 +124,65 @@ def search_index(int_list, target_val):
             return
 
 
-search_index([1, 3, 5, 7, 9], 7)
-search_index([1, 3, 5, 9], 7)
+# search_index([1, 3, 5, 7, 9], 7)
+# search_index([1, 3, 5, 9], 7)
+
+# Problem 9: Given an integer array nums, find the contiguous subarray (containing at least one number) which has the
+# largest sum and return its sum.
+
+def largest_sum_list(int_list):
+    # max_sum = 0
+    # len_int_list = len(int_list)
+    # for i in range(0, len_int_list):
+    #     current_sum = 0
+    #     # print(f"i: {i}, max_sum: {max_sum}, current_sum: {current_sum}")
+    #     for j in range(i, len_int_list):
+    #         current_sum += int_list[j]
+    #         max_sum = max(current_sum, max_sum)
+    #         print(f"i: {i}, j: {j}, max_sum: {max_sum}, current_sum: {current_sum}")
+    #         print(int_list)
+    #
+    # return max_sum
+
+    n = len(int_list)
+    max_sum = 0
+    curr_sum = 0
+
+    for i in range(0, n):
+        curr_sum = curr_sum + int_list[i]
+        print(int_list)
+        if curr_sum > max_sum:
+            print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
+            max_sum = curr_sum
+        if curr_sum < 0:
+            print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
+            curr_sum = 0
+        # print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
+
+    return max_sum
+
+
+# print(largest_sum_list([1, 3, 8, -2, 6, -8, 5]))  # 16
+
+# Problem 10: Given a collection of intervals, merge any overlapping intervals.
+
+def merge_intervals(intervals_list):
+    merged_intervals = []
+
+    # O(n)2
+    # for i in range(len(intervals_list)):
+    #     for j in range(i, len(intervals_list)):
+    #         if intervals_list[j][0] < intervals_list[i][1] < intervals_list[j][1]:
+    #             merged_intervals.append([intervals_list[i][0], intervals_list[j][1]])
+
+    intervals_list.sort(key=lambda x: x[0])
+
+    # O(n)
+    for i in range(len(intervals_list) - 1):
+        if intervals_list[i + 1][0] < intervals_list[i][1] < intervals_list[i + 1][1]:
+            merged_intervals.append([intervals_list[i][0], intervals_list[i + 1][1]])
+
+    return merged_intervals
+
+
+print(merge_intervals([[1, 3], [5, 8], [2, 4], [7, 9]]))
