@@ -118,5 +118,26 @@ INSERT INTO EMPLOYEE VALUES (6, 'Dickenson', 2, 5000, 4, "UK");
 select * from DEPARTMENT DEPT
 right join EMPLOYEE EMP
 on DEPT.ID = EMP.DEPT
+;
+
+-- Full join
+select * from DEPARTMENT DEPT
+left join EMPLOYEE EMP
+on DEPT.ID = EMP.DEPT
+union
+select * from DEPARTMENT DEPT
+right join EMPLOYEE EMP
+on DEPT.ID = EMP.DEPT
+;
+
+-- Cross join
+select * from DEPARTMENT DEPT
+cross join EMPLOYEE EMP
+;
+
+select * from DEPARTMENT DEPT
+cross join EMPLOYEE EMP
+where DEPT.NAME = "BADEVQA"
+;
 
 */
