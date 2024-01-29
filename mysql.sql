@@ -141,3 +141,6 @@ where DEPT.NAME = "BADEVQA"
 ;
 
 */
+
+-- 3rd highest salary department wise
+--
