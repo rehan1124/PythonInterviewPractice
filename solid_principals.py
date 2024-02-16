@@ -35,7 +35,7 @@ class Order:
         return tp
 
 
-class PaymentProcessor:
+class PaymentProcessor(ABC):
 
     @abstractmethod
     def pay(self, order_obj):
