@@ -8,6 +8,8 @@ Interface segregation
 Dependency inversion
 
 https://www.youtube.com/watch?v=pTB30aXS77U
+
+https://www.youtube.com/watch?v=ZkknJI3QMss
 https://www.youtube.com/watch?v=acmPg6aV-Zs&list=PLyLkn_nipSjNVOpdOG-nETxKfgEpbubMQ
 https://www.youtube.com/watch?v=HLFbeC78YlU&list=PL6n9fhu94yhXjG1w2blMXUzyDrZ_eyOme
 """
@@ -36,21 +38,53 @@ class Order:
 class PaymentProcessor:
 
     @abstractmethod
-    def pay(self, order_obj, security_code):
+    def pay(self, order_obj):
         pass
 
 
-class DebitPaymentProcessor(PaymentProcessor):
-    def pay(self, order_obj, security_code):
+class SmsPaymentProcessor(PaymentProcessor):
+
+    @abstractmethod
+    def authorize_user(self, code):
+        pass
+
+
+class DebitPaymentProcessor(SmsPaymentProcessor):
+    def __init__(self, security_code):
+        self._security_code = security_code
+        self._verified = False
+
+    def pay(self, order_obj):
+        if not self._verified:
+            raise Exception("User is not verified.")
         print("Processing debit payment...")
-        print(f"Verifying security code: {security_code}")
+        print(f"Verifying security code: {self._security_code}")
         order_obj._status = "Paid"
+
+    def authorize_user(self, code):
+        print(f"Verifying SMS code: {code}")
+        self._verified = True
 
 
 class CreditPaymentProcessor(PaymentProcessor):
-    def pay(self, order_obj, security_code):
+    def __init__(self, security_code):
+        self._security_code = security_code
+        self._verified = False
+
+    def pay(self, order_obj):
         print("Processing credit payment...")
-        print(f"Verifying security code: {security_code}")
+        print(f"Verifying security code: {self._security_code}")
+        order_obj._status = "Paid"
+
+
+class PaypalPaymentProcessor(PaymentProcessor):
+    def __init__(self, email):
+        self._email = email
+        self._verified = False
+
+    def pay(self, order_obj):
+        print("Processing paypal payment...")
+        print(f"Verifying email: {self._email}")
         order_obj._status = "Paid"
 
 
@@ -60,8 +94,12 @@ order.add_item("Mouse", 4, 40)
 order.add_item("Charger", 3, 100)
 print("Total price for order made:", order.total_price())
 
-dpp = DebitPaymentProcessor()
-dpp.pay(order, 111)
-
-cpp = CreditPaymentProcessor()
-cpp.pay(order, 111)
+dpp = DebitPaymentProcessor(111)
+dpp.authorize_user(1234)
+dpp.pay(order)
+print("++++++++++++++++++++++++++++++++++++++++")
+cpp = CreditPaymentProcessor(222)
+cpp.pay(order)
+print("++++++++++++++++++++++++++++++++++++++++")
+ppp = PaypalPaymentProcessor("abc@gmail.com")
+ppp.pay(order)
