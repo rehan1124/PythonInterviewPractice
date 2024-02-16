@@ -14,13 +14,13 @@ Partitioning: Adding pivot element at its right position
 
 
 def quick_sorting(sample_list):
-    print(f"Got list: {sample_list}")
+    # print(f"Got list: {sample_list}")
     smaller, equal, larger = [], [], []
     if len(sample_list) < 2:
         return sample_list
 
     pivot = sample_list[-1]
-    print(f"Pivot element >>> {pivot}")
+    # print(f"Pivot element >>> {pivot}")
 
     for item in sample_list:
         if item < pivot:
@@ -30,7 +30,7 @@ def quick_sorting(sample_list):
         else:
             larger.append(item)
 
-    print(f"Processing: {smaller}, {equal}, {larger}")
+    # print(f"Processing: {smaller}, {equal}, {larger}")
     return quick_sorting(smaller) + quick_sorting(equal) + quick_sorting(larger)
 
 

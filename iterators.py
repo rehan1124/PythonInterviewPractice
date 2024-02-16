@@ -13,7 +13,7 @@ print(type(it))
 
 while it:
     try:
-        print(it)
+        # print(it)
         print(next(it))
     except StopIteration as si:
         # print("Iteration stopped.")

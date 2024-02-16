@@ -84,6 +84,7 @@ where E.dept in ("Sales") and E1.dept = "Sales"
 --- New table creation ---
 --------------------------
 
+
 -- create DEPARTMENT
 CREATE TABLE DEPARTMENT (
   ID INTEGER PRIMARY KEY,
@@ -94,7 +95,7 @@ CREATE TABLE DEPARTMENT (
 CREATE TABLE EMPLOYEE (
   ID INTEGER PRIMARY KEY,
   NAME TEXT NOT NULL,
-  DEPT INTEGER NOT NULL,
+  DEPT INTEGER,
   SALARY numeric NOT NULL,
   MGR INTEGER NULL,
   LOCATION TEXT NOT NULL
@@ -113,6 +114,11 @@ INSERT INTO EMPLOYEE VALUES (3, 'Harry', 3, 2500, 1, "INDIA");
 INSERT INTO EMPLOYEE VALUES (4, 'Ava', 3, 3000, NULL, "UK");
 INSERT INTO EMPLOYEE VALUES (5, 'Tom', 1, 4000, 4, "UK");
 INSERT INTO EMPLOYEE VALUES (6, 'Dickenson', 2, 5000, 4, "UK");
+INSERT INTO EMPLOYEE VALUES (7, 'No dept', NULL, 5000, 4, "UK");
+
+select * from EMPLOYEE;
+select * from DEPARTMENT;
+
 
 -- fetch
 select * from DEPARTMENT DEPT
@@ -143,4 +149,51 @@ where DEPT.NAME = "BADEVQA"
 */
 
 -- 3rd highest salary department wise
---
+/*
+https://app.coderpad.io/sandbox
+
+with salary_ranks AS (
+SELECT e.first_name, e.last_name, e.salary,
+  d.name as department_name, ROW_NUMBER() OVER (PARTITION BY d.name ORDER BY e.salary desc) as salary_rank
+FROM employees AS e
+INNER JOIN departments AS d ON e.department_id = d.id
+)
+
+select * from salary_ranks where salary_rank = 1;
+*/
+
+-- Duplicate employee count
+/*
+select CONCAT(first_name, " ", last_name) as full_name, count(*) emp_count
+from employees
+group by full_name
+order by full_name
+;
+*/
+
+-- Department-wise budget
+/*
+select AVG(p1.budget) as dept_budget, d1.name as dept_name
+from projects as p1
+INNER join employees_projects as ep1 on p1.id = ep1.project_id
+INNER join employees as e1 on ep1.employee_id = e1.id
+INNER join departments as d1 on e1.department_id = d1.id
+GROUP by dept_name
+;
+*/
+
+/*
+-- Stored procedures
+
+DROP PROCEDURE IF EXISTS get_employees_data;
+
+DELIMITER //
+CREATE PROCEDURE get_employees_data(IN department_id INT)
+BEGIN
+    SELECT * FROM employees WHERE employees.department_id = department_id;
+END //
+DELIMITER ;
+
+call get_employees_data(2);
+
+*/

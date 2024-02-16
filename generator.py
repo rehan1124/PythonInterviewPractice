@@ -23,7 +23,7 @@ for items in ge:
     print(items)
 """
 
-"""
+
 # Example-2
 def top_ten_square():
     i = 1
@@ -36,4 +36,4 @@ tts = top_ten_square()
 
 for values in tts:
     print(values)
-"""
+

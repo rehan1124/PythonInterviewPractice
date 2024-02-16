@@ -32,6 +32,11 @@ finally:
     time.sleep(10)
     driver.quit()
 
+"""
+--- Pop and Alerts ---
 driver.switch_to.alert.accept()
 driver.switch_to.alert.dismiss()
 driver.switch_to.frame()
+driver.switch_to.alert.send_keys("ABC")
+driver.switch_to.alert.text
+"""

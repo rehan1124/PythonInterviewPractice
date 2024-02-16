@@ -150,19 +150,21 @@ def largest_sum_list(int_list):
 
     for i in range(0, n):
         curr_sum = curr_sum + int_list[i]
-        print(int_list)
+        # print(int_list)
         if curr_sum > max_sum:
-            print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
+            # print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
             max_sum = curr_sum
         if curr_sum < 0:
-            print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
+            # print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
             curr_sum = 0
         # print(f"i: {i}, max_sum: {max_sum}, curr_sum: {curr_sum}")
 
     return max_sum
 
 
-# print(largest_sum_list([1, 3, 8, -2, 6, -8, 5]))  # 16
+print("--- Largest sum ---")
+print(largest_sum_list([1, 3, 8, -2, 6, -8, 5]))  # 16
+
 
 # Problem 10: Given a collection of intervals, merge any overlapping intervals.
 
