@@ -3,6 +3,7 @@ class ReadFile:
         self._filename = filename
 
     def read_file(self):
+        print("--- Reading the file ---")
         with open(self._filename, "r") as infile:
             file_content = infile.readlines()
         it_obj = iter(file_content)
