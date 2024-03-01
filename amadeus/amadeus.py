@@ -2,7 +2,7 @@ class ReadFile:
     def __init__(self, filename):
         self._filename = filename
 
-    def read_file(self):
+    def __call__(self):
         print("--- Reading the file ---")
         with open(self._filename, "r") as infile:
             file_content = infile.readlines()
@@ -17,4 +17,4 @@ class ReadFile:
 
 
 rf = ReadFile("db.txt")
-rf.read_file()
+rf()
