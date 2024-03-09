@@ -11,10 +11,8 @@ nums = ["a", 9, "b", 10]
 it = iter(nums)
 print(type(it))
 
-while it:
-    try:
-        # print(it)
+try:
+    while it:
         print(next(it))
-    except StopIteration as si:
-        # print("Iteration stopped.")
-        break
+except StopIteration as si:
+    pass

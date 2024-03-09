@@ -25,15 +25,24 @@ for items in ge:
 
 
 # Example-2
-def top_ten_square():
-    i = 1
-    while i <= 10:
-        yield i * i
-        i += 1
+# def top_ten_square():
+#     i = 1
+#     while i <= 10:
+#         yield i * i
+#         i += 1
+#
+#
+# tts = top_ten_square()
+#
+# for values in tts:
+#     print(values)
 
 
-tts = top_ten_square()
+def generate_numbers():
+    for i in range(5):
+        yield i
 
-for values in tts:
-    print(values)
 
+numbers = generate_numbers()
+for i in numbers:
+    print(i)

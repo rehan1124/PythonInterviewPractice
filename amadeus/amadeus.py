@@ -18,3 +18,5 @@ class ReadFile:
 
 rf = ReadFile("db.txt")
 rf()
+print(repr(rf))
+print(str(rf))
