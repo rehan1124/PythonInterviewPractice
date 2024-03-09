@@ -14,7 +14,9 @@ def two_sum(num_list, target):
         seen[num] = i
 
 
-# two_sum([0, 2, 4, 6, 8, 10], 10)
+print("two_sum:")
+two_sum([0, 2, 4, 6, 8, 10], 10)
+
 
 # Problem 2: Reverse digits of an integer.
 
@@ -53,13 +55,15 @@ def longest_common_prefix(str_list):
     print("Longest common prefix:", prefix)
 
 
-# longest_common_prefix(["mint", "mini", "mineral"])
+longest_common_prefix(["mint", "mini", "mineral"])
+
 
 # Problem 5: Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input
 # string is valid.
 
 def balanced_paranthesis(sample_str):
-    paranthesis_dict = {"{": "}", "[": "]", "(": ")"}
+    # paranthesis_dict = {"{": "}", "[": "]", "(": ")"}
+    paranthesis_dict = ("{", "[", "(")
     stack = []
     for items in sample_str:
         if items in paranthesis_dict:
@@ -74,8 +78,9 @@ def balanced_paranthesis(sample_str):
     print(not stack)
 
 
-# balanced_paranthesis("{[()]}{]{}}")  # Not balanced
-# balanced_paranthesis("{[()]}")  # Balanced
+print("--- balanced_paranthesis ---")
+balanced_paranthesis("{[()]}{]{}}")  # Not balanced
+balanced_paranthesis("{[()]}")  # Balanced
 
 
 # Problem 6: Given a sorted array nums, remove the duplicates in-place such that each element appears only once and
@@ -195,8 +200,10 @@ def merge_intervals(intervals_list):
 
 def add_one(int_list):
     int_list = list(map(lambda x: str(x), int_list))
+    print(int_list)
     return list((map(lambda x: int(x), str(int("".join(int_list)) + 1))))
 
 
+print("--- add_one ---")
 print(add_one([9, 9, 9]))
 print(add_one([1, 2, 4]))
