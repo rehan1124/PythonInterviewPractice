@@ -176,12 +176,6 @@ print(largest_sum_list([1, 3, 8, -2, 6, -8, 5]))  # 16
 def merge_intervals(intervals_list):
     merged_intervals = []
 
-    # O(n)2
-    # for i in range(len(intervals_list)):
-    #     for j in range(i, len(intervals_list)):
-    #         if intervals_list[j][0] < intervals_list[i][1] < intervals_list[j][1]:
-    #             merged_intervals.append([intervals_list[i][0], intervals_list[j][1]])
-
     intervals_list.sort(key=lambda x: x[0])
 
     # O(n)
