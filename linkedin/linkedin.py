@@ -15,16 +15,6 @@
 # 1) Write code to filter duplicate elements from an array and print as a list.
 
 def filter_duplicate_elements(arr1):
-    # filtered_list = []
-    # filtered_dict = dict()
-    #
-    # for items in arr1:
-    #     if items not in filtered_dict:
-    #         filtered_dict[items] = True
-    #         filtered_list.append(items)
-    #
-    # return filtered_list
-
     return list(set(arr1))
 
 
